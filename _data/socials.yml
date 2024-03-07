@@ -1,0 +1,17 @@
+email:
+  id: "gsolimeno97@gmail.com"
+  title: "Email"
+  href: "mailto:gsolimeno97@gmail.com"
+  name: "devto"
+
+mastodon:
+  id: "mayoaddictrat"
+  title: "Mastodon"
+  href: "https://mastodon.gamedev.place/@mayoaddictrat"
+  name: "mastodon"
+
+github:
+  id: "Crax97"
+  title: "GitHub"
+  href: "https://www.github.com/Crax97"
+  name: "github"

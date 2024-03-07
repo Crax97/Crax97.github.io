@@ -39,6 +39,13 @@
 html,
 body {
   overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.container {
+  flex: 1;
 }
 
 html {
@@ -604,3 +611,45 @@ a.pagination-item:hover {
 .layout-reverse.sidebar-overlay #sidebar-checkbox:checked~.sidebar {
   box-shadow: -.25rem 0 .5rem rgba(0, 0, 0, .1);
 }
+
+.site-footer {
+  text-align: center;
+  height: 2.5rem;
+  border-top: 1px solid #eee;
+}
+
+.site-footer #container {
+  margin: auto;
+  margin-top: 0.75em;
+}
+
+.site-footer ul {
+  display: grid;
+  list-style-type: none;
+  grid-template-columns: 1fr 1fr;
+  /* set column sizes here */
+  grid-template-rows: auto auto;
+  /* we want two rows */
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+}
+
+.site-footer ul li {
+  display: inline;
+  margin-left: 1em;
+}
+
+/*
+.site-footer img {
+  max-width: 10px;
+}
+
+.site-footer svg {
+  width: 1rem;
+}
+
+.site-footer p {
+  max-height: 20px;
+}
+*/

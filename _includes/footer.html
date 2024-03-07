@@ -1,0 +1,25 @@
+<footer class="site-footer h-card">
+    <div id="container">
+        <data class="u-url" href="{{ " /" | relative_url }}"></data>
+        {{site.description}}
+
+        {% if site.data.socials %}
+        <div id="social-media">
+            <ul>
+                {% assign sm = site.data.socials %}
+                {% for entry in sm %}
+                {% assign key = entry | first %}
+                {% if sm[key].id %}
+                <li>
+                    <span> {{key}} <a href="{{ sm[key].href }}">{{sm[key].id}}</a>
+                    </span>
+                </li>
+
+                {% endif %}
+                {% endfor %}
+            </ul>
+        </div>
+        {% endif %}
+    </div>
+
+</footer>
