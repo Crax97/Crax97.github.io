@@ -45,6 +45,8 @@ html,
 body {
   margin: 0;
   padding: 0;
+  display: flex;
+  flex-flow: column;
 }
 
 html {
@@ -321,6 +323,10 @@ tbody tr:nth-child(odd) th {
   padding-right: 1rem;
   margin-left: auto;
   margin-right: auto;
+}
+
+.home {
+  min-width: 55em;
 }
 
 

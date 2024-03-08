@@ -80,6 +80,9 @@ code #language-plaintext {
 .wrap {
   position: relative;
   width: 100%;
+  display: flex;
+  flex-flow: column;
+  height: 100%;
 }
 
 
@@ -88,7 +91,7 @@ code #language-plaintext {
  *
  * Center the page content.
  */
-
+/* 
 .container {
   max-width: 28rem;
 }
@@ -103,7 +106,7 @@ code #language-plaintext {
   .container {
     max-width: 38rem;
   }
-}
+} */
 
 
 /*
@@ -117,6 +120,7 @@ code #language-plaintext {
   padding-bottom: 1rem;
   margin-bottom: 3rem;
   border-bottom: 1px solid #eee;
+  flex: 0 1 auto;
 }
 
 .masthead-title {
@@ -616,28 +620,47 @@ a.pagination-item:hover {
   text-align: center;
   height: 2.5rem;
   border-top: 1px solid #eee;
+
+  font-size: smaller;
+  flex: 0 1 6.2em;
+}
+
+.site-footer #spacer {
+  /* flex: 0 1 40px; */
+  width: 100%;
+
+}
+
+footer #container {
+  padding-left: 0;
+}
+
+.site-footer h4 {
+  color: #F3EFE0;
+  font-style: normal;
+  font-weight: 200;
 }
 
 .site-footer #container {
   margin: auto;
   margin-top: 0.75em;
+  /* margin-left: 4em; */
+  max-width: 48em;
+  text-align: center;
 }
 
 .site-footer ul {
-  display: grid;
   list-style-type: none;
-  grid-template-columns: 1fr 1fr;
-  /* set column sizes here */
-  grid-template-rows: auto auto;
-  /* we want two rows */
-  text-align: center;
-  justify-content: center;
-  align-items: center;
+
+  padding-left: 0;
+  width: 100%;
+  /* justify-content: center;
+  align-items: center; */
 }
 
 .site-footer ul li {
   display: inline;
-  margin-left: 1em;
+  margin-right: 2em;
 }
 
 /*
