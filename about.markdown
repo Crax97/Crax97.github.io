@@ -4,15 +4,8 @@ title: About
 permalink: /about/
 ---
 
-This is the base Jekyll theme. You can find out more info about customizing your Jekyll theme, as well as basic Jekyll usage documentation at [jekyllrb.com](https://jekyllrb.com/)
+I'm a Graphics/Engine programmer from Italy with 3 years of experience, currently employed at Stormind Games SRL.
 
-You can find the source code for Minima at GitHub:
-[jekyll][jekyll-organization] /
-[minima](https://github.com/jekyll/minima)
+In my free time i like to work on my (yet unnamed) game engine, playing video games and cooking. 
 
-You can find the source code for Jekyll at GitHub:
-[jekyll][jekyll-organization] /
-[jekyll](https://github.com/jekyll/jekyll)
-
-
-[jekyll-organization]: https://github.com/jekyll
+I'm most active on Bluesky [@mayoaddictrat](https://bsky.app/profile/mayoaddictrat.bsky.social) and Discord (`mayoaddictrat`), if you want to talk to me.

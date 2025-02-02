@@ -2,9 +2,13 @@
 layout: post
 title:  "So you want to implement Skeletal Animation"
 date:   2025-02-02 16:00:00 +0100
-categories: vulkan graphics rendering engine gamedev
-hidden: true
+categories: rendering engine
+hidden: false
 ---
+
+This is the first entry in a series of posts i'm doing about implementing Skeletal Animation.
+The introduction will be updated with links to the next posts
+
 ### SMALL BUT NEEDED INTRODUCTION ON SKELETAL ANIMATION
 Video games are composed of multiple layers to immerse the player into their worlds: one of these layers (and imho one of the most important ones) is character animation.
 

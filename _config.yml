@@ -26,8 +26,9 @@ description: >- # this means to ignore newlines until "baseurl:"
 domain: https://Crax97.github.io
 url: https://Crax97.github.io
 baseurl: "" # the subpath of your site, e.g. /blog
-twitter_username: jekyllrb
+twitter_username: mayoaddictrat
 github_username: Crax97
+bluesky_username: mayoaddictrat.bsky.social
 mastodon:
   - username: mayoaddictrat
     instance: gamedev.place
@@ -36,6 +37,13 @@ mastodon:
 theme: minima
 plugins:
   - jekyll-feed
+
+markdown: kramdown
+highlighter: rouge
+
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
 # Exclude from processing.
 # The following items will not be processed, by default.
 # Any item listed under the `exclude:` key here will be automatically added to
