@@ -3,11 +3,13 @@ layout: post
 title:  "So you want to implement Skeletal Animation"
 date:   2025-02-02 16:00:00 +0100
 categories: rendering engine
-hidden: false
+hidden: true
 ---
 
 This is the first entry in a series of posts i'm doing about implementing Skeletal Animation.
-The introduction will be updated with links to the next posts
+The introduction will be updated with links to the next posts.
+
+In part 2 i will explain the skinning pipeline i use in my engine, in part 3 how to read a skeletal mesh and its animations from a glTF file.
 
 ### SMALL BUT NEEDED INTRODUCTION ON SKELETAL ANIMATION
 Video games are composed of multiple layers to immerse the player into their worlds: one of these layers (and imho one of the most important ones) is character animation.
@@ -32,7 +34,7 @@ INSERT BLENDER ACTION EDITOR PIC
 
 ### GETTING OUR HANDS DIRTY
 Let's start by defining a Static Mesh's `Vertex`
-```c
+{% highlight c++ %}
 struct Vertex {
     vec3 position;
     vec3 normal;
@@ -41,9 +43,9 @@ struct Vertex {
     vec3 tangent;
     vec3 bitangent;
 };
-```
+{% endhighlight %}
 A Skinned Mesh is composed of Skinned Vertices (duh): a Skinned Vertex just extends our `Vertex` struct with two additional fields: one indicating which bones the vertex is influenced from, and another indicating how much the bone influences the vertex.
-```glsl
+```c++
 struct SkinnedVertex {
     vec3 position;
     vec3 normal;
@@ -60,6 +62,15 @@ where the sum of `bone_weights` should equal to 1.
 
 You can see that, with this definition, we're limited to up to 4 bones per vertex: this is usually enough, and should suffice for most applications.
 
+Now, let's also define a `Bone`: 
+```c++
+struct Bone {
+  int id;
+  int parent;
+  mat4 inverse_bind_pose; // I'm going to explain what this does later
+}
+```
+
 As we said earlier, we will be appling a specific **Keyframe** during rendering: what we mean is that the keyframe will contain for each bone a model space affine transform matrix for each bone, which we will use to transform each vertex.
 For now, let's assume that we got from some magic place an array of `mat4 bone_transforms` containing the keyframe's bone transform matrices, and let's define the set of operations needed to animate a Skinned Mesh.
 
@@ -70,7 +81,7 @@ The algorithm is very simple:
 4. The accumulated position is the result of the skinning process
 
 My engine does something like this
-```glsl
+```c++
 mat4 bone_transforms[MAX_BONES]; // the array of bone transforms
 struct TransformedVertex {
 	vec3 position;
@@ -101,10 +112,9 @@ When we rotate our arm, it makes sense to define how our arm rotates with respec
 
 Animatons work in the same way: for each keyframe, we know the bone's *local transform* (expressed w.r.t the bone's parent): in order to know each bone's global transform, we need to multiply the bone's local transform with the bone parent's global transform.
 
-Expressed in pseudocode, it's something like this
-```c
+```c++
 mat4 global_transform(Bone bone) {
-  if(bone has no parent) {
+  if(parent[bone.id] == -1) {
     return bone.local_transform;
   }
   return bone.local_transform * global_transform(bone.parent);
@@ -121,7 +131,7 @@ When the rest pose is applied, all the vertices are transformed by the influenci
 That's an issue, because in our applications we're most likely working in model space: thus, we need to undo the bind pose transformation.
 With all said, that's very easy: the bind pose matrix is just another affine transformation matrix. We can then apply the inverted matrix, often called a bone's *inverse pose matrix*, to the result of our `global_transform()` function:
 Given a `Bone b`
-```c
+```c++
 bone_transforms[b.id] = bone.inverse_bind_pose * global_transform(b);
 ```
 
