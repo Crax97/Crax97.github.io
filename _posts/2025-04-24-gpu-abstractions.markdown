@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Abstracting a graphics API"
-date:   2025-02-02 16:00:00 +0100
+date:   2025-04-25 16:00:00 +0100
 categories: rendering engine
 hidden: true
 ---
