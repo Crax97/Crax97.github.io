@@ -1,4 +1,5 @@
 @charset "utf-8";
+@use "sass:color";
 
 // Define defaults for each variable.
 
@@ -16,8 +17,8 @@ $code-background-color: #16191d !default;
 $brand-color: #2a7ae2 !default;
 
 $grey-color: #828282 !default;
-$grey-color-light: lighten($grey-color, 40%) !default;
-$grey-color-dark: darken($grey-color, 25%) !default;
+$grey-color-light: color.adjust($grey-color, $lightness: 40%) !default;
+$grey-color-dark: color.adjust($grey-color, $blackness: 25%) !default;
 
 $site-title: #B84A62 !default;
 $main-accent-color: #087F8C !default;
@@ -48,11 +49,11 @@ $on-laptop: 800px !default;
   font-size: $base-font-size * $ratio;
 }
 
+
+// Fonts
+@import url('https://fonts.googleapis.com/css2?family=Funnel+Sans:ital,wght@0,300..800;1,300..800&display=swap');
 // Import partials.
 @import "minima/base",
 "minima/layout",
 "minima/syntax-highlighting"
 ;
-
-// Fonts
-@import url('https://fonts.googleapis.com/css2?family=Funnel+Sans:ital,wght@0,300..800;1,300..800&display=swap');
