@@ -34,7 +34,7 @@ INSERT BLENDER ACTION EDITOR PIC
 
 ### GETTING OUR HANDS DIRTY
 Let's start by defining a Static Mesh's `Vertex`
-{% highlight c++ %}
+{% highlight cpp %}
 struct Vertex {
     vec3 position;
     vec3 normal;
@@ -45,7 +45,7 @@ struct Vertex {
 };
 {% endhighlight %}
 A Skinned Mesh is composed of Skinned Vertices (duh): a Skinned Vertex just extends our `Vertex` struct with two additional fields: one indicating which bones the vertex is influenced from, and another indicating how much the bone influences the vertex.
-```c++
+```cpp
 struct SkinnedVertex {
     vec3 position;
     vec3 normal;
@@ -63,7 +63,7 @@ where the sum of `bone_weights` should equal to 1.
 You can see that, with this definition, we're limited to up to 4 bones per vertex: this is usually enough, and should suffice for most applications.
 
 Now, let's also define a `Bone`: 
-```c++
+```cpp
 struct Bone {
   int id;
   int parent;
@@ -81,7 +81,7 @@ The algorithm is very simple:
 4. The accumulated position is the result of the skinning process
 
 My engine does something like this
-```c++
+```cpp
 mat4 bone_transforms[MAX_BONES]; // the array of bone transforms
 struct TransformedVertex {
 	vec3 position;
@@ -112,7 +112,7 @@ When we rotate our arm, it makes sense to define how our arm rotates with respec
 
 Animatons work in the same way: for each keyframe, we know the bone's *local transform* (expressed w.r.t the bone's parent): in order to know each bone's global transform, we need to multiply the bone's local transform with the bone parent's global transform.
 
-```c++
+```cpp
 mat4 global_transform(Bone bone) {
   if(parent[bone.id] == -1) {
     return bone.local_transform;
@@ -131,7 +131,7 @@ When the rest pose is applied, all the vertices are transformed by the influenci
 That's an issue, because in our applications we're most likely working in model space: thus, we need to undo the bind pose transformation.
 With all said, that's very easy: the bind pose matrix is just another affine transformation matrix. We can then apply the inverted matrix, often called a bone's *inverse pose matrix*, to the result of our `global_transform()` function:
 Given a `Bone b`
-```c++
+```cpp
 bone_transforms[b.id] = bone.inverse_bind_pose * global_transform(b);
 ```
 

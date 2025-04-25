@@ -1,3 +1,8 @@
+@font-face {
+  font-family: maple-mono;
+  src: url(/assets/fonts/MapleMono-Light.ttf);
+}
+
 /**
  * Reset some basic elements
  */
@@ -181,9 +186,10 @@ blockquote {
 pre,
 code {
   @include relative-font-size(0.9375);
+  font-family: 'maple-mono';
   border: 1px solid $grey-color-light;
   border-radius: 3px;
-  background-color: #eef;
+  background-color: $code-background-color;
 }
 
 code {
@@ -191,6 +197,7 @@ code {
 }
 
 pre {
+  background-color: $background-color !important;
   padding: 8px 12px;
   overflow-x: auto;
 
@@ -289,3 +296,12 @@ table {
     border: 1px solid $grey-color-light;
   }
 }
+
+code {
+  background-color: $background-color;
+  border-color: $background-color;
+  color: $main-accent-color;
+  font-family: maple-mono;
+}
+
+
